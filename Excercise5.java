@@ -17,7 +17,7 @@ public class Excercise5 {
 	    	System.out.println("arr["+i+"]:" + arr[i]);
 	    }
 	    	
-	    int []tmp = new int[arr.length*2]; //배열의 길이 10
+	    int[]tmp = new int[arr.length*2]; //배열의 길이 10
 	    
 	    for(int i=0;i<arr.length;i++) {
 	    	tmp[i]=arr[i];
@@ -184,6 +184,98 @@ public class Excercise5 {
 	    	 System.out.println(i+"의 개수 :"+counter[i]);
 	     }
 	     
+	
+	/**5-5. 1~9사이의 중복되지 않은 숫자로 이루어진 3자리 숫자를 만들어내는 프로그램이다.********/	
+	
+	     int [] ballArr = {1,2,3,4,5,6,7,8,9}; //length:9
+	     int [] ball3 = new int[3];
+	     
+	     //배열 ballArr의 요소를 골라서 위치를 바꾼다.
+	     for(int i=0;i<ballArr.length;i++) {
+	    	 j= (int)(Math.random()*ballArr.length); //0~9 index번호를 random 할거라 ..
+	    	 int tmp1= 0;
+	    	 
+	    	 tmp1=ballArr[i];
+	    	 ballArr[i]=ballArr[j];
+	    	 ballArr[j]=tmp1;
+	    	//위치를 서로 섞는 과정
+	     }
+	     //배열 ballArr의 앞에서 3개의 수를 배열 ball3로 복사한다.
+	     System.arraycopy(ballArr,0,ball3,0, 3);
+	     System.out.println(Arrays.toString(ball3));
+	
+	
+	
+	/*****5-6 거스름돈을 몇개의 동전으로 지불 할 수 있는지를 계산하는 문제이다.
+	 * 변수money의 금액을 동전으로 바꾸었을 때 각각 몇개의 동전이 필요한지 계산해서 출력하라.
+	 * 단, 가능한 적은 수의 동전으로 거슬러주어야한다. 나눗셈연산자,나머지연산자 이용
+	 * **********************************************/
+	 int [] coinUnit = {500,100,50,10};
+	 
+	 int money=2680;
+	 System.out.println("money="+money);
+
+	 for(int i=0;i<coinUnit.length;i++) {
+		 System.out.println(coinUnit[i]+"원:"+money/coinUnit[i]);//5  1  1  3
+		 money=money%coinUnit[i];//180  80  30  0
+		 //일단 큰 단위인 500원부터 순서대로  나눗셈연산자 계산하는데 더이상 나눌수없는 나머지를 money의 값으로 변경 시켜줘야 다음 동전 갯수들을 알수있음.
+	 }
+	
+	/****5-7 위의 문제 연동 커맨드라인으로부터 거슬러 줄 금액을 입력받아 계산한다. 보유한 동전의 개수로 거스름돈을 지불할 수 없으면,
+	 * '거스름돈이 부족합니다.'라고 출력하고 종료한다. 지불할 돈이 충분히 있으면, 거스름돈을 지불한 만큼 가진 돈에서 빼고 남은 동전의 갯수를 화면에 출력한다.************/
+	
+	  if(args.length!=1) {
+		  System.out.println("USAGE: JAVA EXCERCISE 5-7");
+		  System.exit(0);
+	  }
+	 // 문자열을 숫자로 변환한다. 입력한 값이 숫자가 아닐 경우 예외발생
+	  money=Integer.parseInt(args[0]);
+	  
+	  System.out.println("money="+money);
+	  
+	  int [] coin = {5,5,5,5};//단위별 동전의 갯수
+	  
+	  for(int i=0;i<coinUnit.length;i++) {
+		  int coinNum=0;
+		  
+		  //1.금액money를 동전단위로 나눠서 필요한 동전의갯수 coinNum을 구한다.
+		  coinNum=money/coinUnit[i];
+		  
+		  //2.배열 coin에서 coinNum만큼의 동전을 뺀다. 만일 충분한 동전이 없다면 배열 coin에 있는만큼만 뺀다.
+		  if(coin[i]>=coinNum) {
+			  coin[i]-=coinNum;
+			  
+		  }else {
+			  coinNum=coin[i];
+			  coin[i]=0;
+		  }
+		  //3.금액에서 동전의 개수와 동전단위를 곱한 값을 뺀다.
+		  money -= coinNum*coinUnit[i];
+		  
+		  System.out.println(coinUnit[i]+"원:"+coinNum);
+	  }
+	  
+	  
+	 if (money>0) {
+		 System.out.println("거스름돈이 부족합니다.");
+		 System.exit(0);//프로그램 종ㄹ
+	 }
+	 System.out.println("=남은 동전의 개수=");
+	 
+	 for(int i=0;i<coinUnit.length;i++) {
+		 System.out.println(coinUnit[i]+"원"+coin[i]);
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	
 	}
 
 }
