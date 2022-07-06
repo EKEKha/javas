@@ -222,7 +222,7 @@ public class Excercise5 {
 	 }
 	
 	/****5-7 위의 문제 연동 커맨드라인으로부터 거슬러 줄 금액을 입력받아 계산한다. 보유한 동전의 개수로 거스름돈을 지불할 수 없으면,
-	 * '거스름돈이 부족합니다.'라고 출력하고 종료한다. 지불할 돈이 충분히 있으면, 거스름돈을 지불한 만큼 가진 돈에서 빼고 남은 동전의 갯수를 화면에 출력한다.************/
+	 * '거스름돈이 부족합니다.'라고 출력하고 종료한다. 지불할 돈이 충분히 있으면, 거스름돈을 지불한 만큼 가진 돈에서 빼고 남은 동전의 갯수를 화면에 출력한다.
 	
 	  if(args.length!=1) {
 		  System.out.println("USAGE: JAVA EXCERCISE 5-7");
@@ -239,14 +239,14 @@ public class Excercise5 {
 		  int coinNum=0;
 		  
 		  //1.금액money를 동전단위로 나눠서 필요한 동전의갯수 coinNum을 구한다.
-		  coinNum=money/coinUnit[i];
+		  coinNum=money/coinUnit[i];  
 		  
 		  //2.배열 coin에서 coinNum만큼의 동전을 뺀다. 만일 충분한 동전이 없다면 배열 coin에 있는만큼만 뺀다.
 		  if(coin[i]>=coinNum) {
 			  coin[i]-=coinNum;
 			  
 		  }else {
-			  coinNum=coin[i];
+			  coinNum=coin[i]; //5개 다쓴경우 Num이 5가 되고 coin 동전의 갯수는 0이된다.
 			  coin[i]=0;
 		  }
 		  //3.금액에서 동전의 개수와 동전단위를 곱한 값을 뺀다.
@@ -255,26 +255,59 @@ public class Excercise5 {
 		  System.out.println(coinUnit[i]+"원:"+coinNum);
 	  }
 	  
-	  
+	  //입력한 금액을 가지고있는 동전들로 처리를 해도 금액이 남아있는경우 
 	 if (money>0) {
 		 System.out.println("거스름돈이 부족합니다.");
-		 System.exit(0);//프로그램 종ㄹ
+		 System.exit(0);//프로그램 종료 
 	 }
-	 System.out.println("=남은 동전의 개수=");
 	 
-	 for(int i=0;i<coinUnit.length;i++) {
+	 //위의 if 문과 독립적
+	 	System.out.println("=남은 동전의 개수=");
+	 
+	 	for(int i=0;i<coinUnit.length;i++) {
 		 System.out.println(coinUnit[i]+"원"+coin[i]);
 	 }
 	 
+	 	************/
+	 
+	 /******5-8 다음은 배열 answer에 담긴 데이터를 읽고 각 수자의 개수를 세어서 개수만큼 '*'을 찍어서 그래프를 그리는 프로그램이다**************/
+	 // 잘 이해안됨!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+	 	int[]answer = {1,4,4,3,1,4,4,2,1,3,2};
+	 	int[]counter1= new int [4];
+	 	
+	 	for(int i=0;i<answer.length;i++) {
+	 		counter1[answer[i]-1]++;
+	 	}
+	 
+	 	for(int i=0;i<counter1.length;i++) {
+	 		System.out.print(counter1[i]);
+	 		for(j=0;j<counter1[i];j++) {
+	 			System.out.print("*");//counter1[i]의 값 만큼 *을 찍는다.
+	 		}
+	 		System.out.println();
+	 	}
+	 
+	 /**********5-11 주어진 2차원 배열의 데이터보다 가로와 세로로 1이 더 큰 배열을 생성하여 배열의 행과 열의 마지막 요소에
+	  * 각 열과 행의 총합을 저장하고 출력하는 프로그램이다.***********************************************************************/ 
+	 int[][]score2= {
+			 {100,100,100}
+			, {20,20,20}
+			, {30,30,30}
+			, {40,40,40}
+			, {50,50,50}
+	 };		 
+		
+	 int[][]result2=new int[score2.length+1][score2[0].length+1]; //	 6, 4
+	 
+	 for(int i=0;i<score2.length;i++) {
+		 for(j=0;j<score2[i].length;j++) {
+			 result2[i][j]=score2[i][j];
+			 
+		 }
 	 
 	 
 	 
-	 
-	 
-	 
-	 
-	 
-	 
+	 }
 	
 	}
 
