@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Excercise5 {
 
@@ -295,20 +296,46 @@ public class Excercise5 {
 			, {30,30,30}
 			, {40,40,40}
 			, {50,50,50}
-	 };		 
+	 };		 //5,3
 		
 	 int[][]result2=new int[score2.length+1][score2[0].length+1]; //	 6, 4
 	 
 	 for(int i=0;i<score2.length;i++) {
 		 for(j=0;j<score2[i].length;j++) {
 			 result2[i][j]=score2[i][j];
+			 result2[i][score2[0].length]+=result2[i][j];//result2[i][3]  행별의 합
+			 result2[score2.length][j]+=result2[i][j]; //result2[5][i]  열의 합
+			 result2[score2.length][score2[0].length]+=result2[i][j];// 총합
 			 
 		 }
-	 
-	 
-	 
 	 }
+	 
+	 for(int i=0;i<result2.length;i++) {
+		 for(j=0;j<result2[i].length;j++) {
+			 System.out.printf("%4d",result2[i][j]);
+		 }
+	   System.out.println();
+	 }
+	 
 	
+	 
+	 /******예제 5-23을 변경하여, 아래와 같은 결과가 나오도록 하시오.**********************************************/
+	 String [][] words= {
+			 {"chair","의자"},    // words[0][0], words[0][1]
+			 {"computer","컴퓨터"},// words[1][0], words[1][1]
+			 {"integer","정수"}   // words[2][0], words[2][1]
+	 };
+	 
+	 int score3=0; //맞춘 문제의 수를 저장하기 위한 변수
+	 
+	 Scanner sc=new Scanner(System.in);
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	}
 
 }
