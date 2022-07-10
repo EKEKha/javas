@@ -7,11 +7,11 @@ class PrimitiveParamEx{
 		System.out.println("main() : x ="+d.x);
 		
 //		change(d.x); //change메서드 호출
-//		System.out.println("After change(d.x)");
+//		System.out.println("After change(d.x)");-----차이
 //		System.out.println("main(): x="+d.x); //10
 		
 		change(d);//주소값 호출
-		System.out.println("After change(d)");
+		System.out.println("After change(d)");//------차이
 		System.out.println("main(): x="+d.x);//1000
 		
 	}
