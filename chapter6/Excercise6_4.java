@@ -10,7 +10,7 @@ class MyPoint{
 	 }
 	 
 	 double getDistance(int x1,int y1) {
-			return Math.sqrt((x-x1)*(x-x1)+(y-y1)*(y-y1)); //x,y는 인스턴스 분수
+			return Math.sqrt((x-x1)*(x-x1)+(y-y1)*(y-y1)); //x,y는 인스턴스 변수
 	 }
 }
 
