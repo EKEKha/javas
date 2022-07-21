@@ -12,7 +12,7 @@ class SutdaDeck{//섯다카드 1~0숫자가 적힌 카드가 한쌍씩 있고, �
 			cards[i]=new SutdaCard(num,isKwang);
 		}
 	}
-	void shuffle() {
+	void shuffle() {//배열 cards에 담긴 카드위 위치를 뒤섞는 메서드
 		for(int i=0;i<cards.length;i++) {
 			int j=(int)(Math.random()*cards.length);
 			
@@ -24,12 +24,12 @@ class SutdaDeck{//섯다카드 1~0숫자가 적힌 카드가 한쌍씩 있고, �
 		}
 	}
 	
-	SutdaCard pick(int index) {
-		if(index<0||index>=CARD_NUM)//index의 유효성 검사.
+	SutdaCard pick(int index) {//ㅂ반환타입 SutdaCard 배열 cards에서 지정된 위치의 SutdaCard반환
+		if(index<0||index>=CARD_NUM)//배열의 범위를 넘지않게 index의 유효성 검사필요.
 			return null;
 		return cards[index];
 	}
-	SutdaCard pick() {
+	SutdaCard pick() {//반환타입 SutdaCard 배열 cards에서 임의의 위치의 SutdaCard를 반환
 		int index=(int)(Math.random()*cards.length);
 		return pick(index);// pick(int index)를 호출한다.
 	}
@@ -60,15 +60,15 @@ public class Excercise6_9 {
 	public static void main(String[] args) {
 		SutdaDeck deck=new SutdaDeck();
 		
-		System.out.println(deck.pick(0));
-		System.out.println(deck.pick());
-		deck.shuffle();
+		System.out.println(deck.pick(0));//섞기전 1k로 고정
+		System.out.println(deck.pick());//index 위치 반환 math.random() 사용으로 값이 계속 바뀜
+		deck.shuffle();//메서드로 섞고(math.random())
 		
-		for(int i=0;i<deck.cards.length;i++) 
+		for(int i=0;i<deck.cards.length;i++) //섞은 배열을 출력
 			System.out.print(deck.cards[i]+",");
 		
 		System.out.println();
-		System.out.println(deck.pick(0));
+		System.out.println(deck.pick(0));//그 배열의 index가 0인 값 출력
 		}
 	}
 
