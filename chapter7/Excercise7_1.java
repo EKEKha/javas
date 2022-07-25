@@ -24,7 +24,7 @@ class MyTv2{
 		this.channel = channel;
 	}
 	public void gottoPrevChannel() {
-		setChannel(prevChannel); // 현재채널을 이전 채널로 변경한다.
+		setChannel(prevChannel); // 현재채널을 이전 채널로 ★★setChannel을 호출해서 channel을 다시 이전 채널로 변경★
 	}
 	
 	public int getVolume() {
@@ -50,14 +50,18 @@ public class Excercise7_1 {
 		
 		t.setChannel(10);
 		System.out.println("CH:"+t.getChannel());
-	
-		
 		t.setChannel(20);
 		System.out.println("CH:"+t.getChannel());
-		t.gottoPrevChannel();
+
+		t.setChannel(20);
 		System.out.println("CH:"+t.getChannel());
-		t.gottoPrevChannel();
+		t.setChannel(20);
 		System.out.println("CH:"+t.getChannel());
+		t.setChannel(20);
+		System.out.println("CH:"+t.getChannel());
+
+
+
 	
 		t.setVolume(20);
 		System.out.println("VOL:"+t.getVolume());
