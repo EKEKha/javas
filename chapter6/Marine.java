@@ -19,4 +19,5 @@ public class Marine {
 		this.y=y;
 	}
 
+
 }
